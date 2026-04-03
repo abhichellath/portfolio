@@ -1,57 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abhi Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- HERO -->
-  <section class="hero">
-    <img src="assets/profile.jpeg" class="profile">
-    <h1>Abhi Chellath</h1>
-    <p class="typing"></p>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="card">
-    <h2>About Me</h2>
-    <p>I am a passionate developer who loves building modern web apps.</p>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="card">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-      <span>Firebase</span>
+  <header class="hero">
+    <div class="hero-overlay">
+      <img src="assets/profile.jpeg" class="profile" alt="Abhi Chellath Profile Photo">
+      <h1>Abhi Chellath</h1>
+      <p class="typing"></p>
+      <p class="hero-sub">
+        Passionate frontend developer focused on clean UI, responsive design, and smooth user experience.
+      </p>
+      <div class="quick-links">
+        <a href="#journey">Learning Journey</a>
+        <a href="#projectsSection">Projects</a>
+        <a href="#contactSection">Contact</a>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- PROJECTS -->
-  <section class="card">
-    <h2>Projects</h2>
-    <div id="projects"></div>
-  </section>
+  <main class="container">
+    <section class="card">
+      <h2>About Me</h2>
+      <p>
+        I am improving my frontend skills every day by building real projects and learning modern web development.
+        I enjoy turning ideas into practical and visually attractive websites.
+      </p>
+    </section>
 
-  <!-- CONTACT -->
-  <section class="card">
-    <h2>Contact Me</h2>
+    <section class="card">
+      <h2>Core Skills</h2>
+      <div class="skills">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>Firebase</span>
+        <span>Responsive Design</span>
+        <span>Form Handling</span>
+      </div>
+    </section>
 
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" placeholder="Your Message" required></textarea>
-      
-      <button type="submit">Send Message</button>
-    </form>
+    <section class="card" id="journey">
+      <h2>HTML, CSS, JavaScript Learning Journey</h2>
+      <div class="learning-grid">
+        <article class="learn-item">
+          <h3>HTML</h3>
+          <p>
+            Structured semantic pages using sections, headers, forms, input validations, and accessible layout practices.
+          </p>
+          <div class="progress"><span style="width: 88%"></span></div>
+        </article>
 
-    <p id="successMsg">✅ Message sent successfully!</p>
-  </section>
+        <article class="learn-item">
+          <h3>CSS</h3>
+          <p>
+            Built responsive UI with gradients, cards, spacing systems, hover effects, media queries, and typography styling.
+          </p>
+          <div class="progress"><span style="width: 82%"></span></div>
+        </article>
 
-  <!-- SCRIPT -->
+        <article class="learn-item">
+          <h3>JavaScript</h3>
+          <p>
+            Added typing animations, form submit handling, DOM manipulation, async Firebase operations, and user feedback states.
+          </p>
+          <div class="progress"><span style="width: 78%"></span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What I Can Build</h2>
+      <div class="service-grid">
+        <article>
+          <h3>Portfolio Websites</h3>
+          <p>Modern personal websites with clean branding and responsive layouts.</p>
+        </article>
+        <article>
+          <h3>Landing Pages</h3>
+          <p>Fast and attractive landing pages focused on conversion and clarity.</p>
+        </article>
+        <article>
+          <h3>Firebase Forms</h3>
+          <p>Contact forms and simple CRUD features connected to Firestore.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card" id="projectsSection">
+      <h2>Projects</h2>
+      <div id="projects"></div>
+    </section>
+
+    <section class="card">
+      <h2>Current Goal</h2>
+      <p>
+        Build production-ready frontend projects, strengthen JavaScript fundamentals, and start delivering freelance web projects.
+      </p>
+    </section>
+
+    <section class="card" id="contactSection">
+      <h2>Contact Me</h2>
+
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <p id="successMsg">✅ Message sent successfully!</p>
+    </section>
+  </main>
+
   <script type="module" src="./app.js"></script>
 </body>
 </html>

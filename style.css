@@ -1,74 +1,192 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI';
-  background: #0f172a;
-  color: white;
+:root {
+  --bg: #0b1328;
+  --surface: #1b2743;
+  --text: #ecf2ff;
+  --muted: #b9c6e4;
+  --accent: #24d4d9;
+  --primary: #6c7bff;
 }
 
-/* HERO */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top left, #1b2d59 0%, var(--bg) 45%);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.container {
+  width: min(1050px, 92%);
+  margin-inline: auto;
+  padding: 1.1rem 0 1.8rem;
+}
+
 .hero {
   text-align: center;
-  padding: 80px;
-  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  padding: 3rem 1rem 2.4rem;
+  background: linear-gradient(130deg, rgba(108, 123, 255, 0.35), rgba(36, 212, 217, 0.2));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-overlay {
+  width: min(900px, 94%);
+  margin-inline: auto;
 }
 
 .profile {
-  width: 140px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 50%;
-  border: 4px solid white;
+  border: 4px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* CARD */
+.typing {
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: 700;
+  min-height: 1.8rem;
+}
+
+.hero-sub {
+  color: var(--muted);
+  max-width: 650px;
+  margin: 0.5rem auto 0;
+}
+
+.quick-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.quick-links a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 0.42rem 0.8rem;
+  font-size: 0.92rem;
+}
+
 .card {
-  background: #1e293b;
-  margin: 20px;
-  padding: 25px;
-  border-radius: 12px;
+  background: linear-gradient(150deg, var(--surface), #18233c);
+  margin: 1rem 0;
+  padding: 1.2rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* SKILLS */
+.card h2 {
+  margin-top: 0;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
 .skills span {
   display: inline-block;
-  background: #334155;
-  padding: 8px 15px;
-  margin: 5px;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.45rem 0.78rem;
+  border-radius: 999px;
 }
 
-/* PROJECTS */
+.learning-grid,
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+
+.learn-item,
+.service-grid article {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.9rem;
+}
+
+.learn-item h3,
+.service-grid h3 {
+  margin-top: 0;
+}
+
+.progress {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.75rem;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+}
+
 .project-card {
-  background: #334155;
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.9rem;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* FORM */
-form input, form textarea {
+form input,
+form textarea {
   width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
+  margin: 0.5rem 0;
+  padding: 0.72rem;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+}
+
+form textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 button {
-  padding: 10px 20px;
-  background: #6366f1;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(130deg, var(--primary), #5367ff);
   border: none;
   color: white;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
 }
 
-/* SUCCESS */
 #successMsg {
   display: none;
-  margin-top: 10px;
-  padding: 10px;
-  background: rgba(34,197,94,0.2);
+  margin-top: 0.7rem;
+  padding: 0.65rem;
+  background: rgba(34, 197, 94, 0.2);
   border: 1px solid #22c55e;
   border-radius: 8px;
-  color: #22c55e;
+  color: #87ffac;
   text-align: center;
+}
+
+@media (max-width: 620px) {
+  .profile {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero {
+    padding-top: 2.3rem;
+  }
 }
