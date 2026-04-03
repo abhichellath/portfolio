@@ -1,55 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Abhi Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhi Chellath | Portfolio</title>
+  <meta name="description" content="Personal portfolio of Abhi Chellath - Web Developer building modern, responsive web applications.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="hero">
+    <nav class="nav container">
+      <p class="brand">Abhi<span>.</span></p>
+      <a href="#contact" class="nav-btn">Let's Talk</a>
+    </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <img src="https://i.imgur.com/1X5Xq.jpg" class="profile">
-    <h1>Abhi Chellath</h1>
-    <p class="typing"></p>
-  </section>
+    <div class="hero-content container">
+      <div class="hero-text">
+        <p class="eyebrow">Available for freelance</p>
+        <h1>Hi, I'm <span>Abhi Chellath</span></h1>
+        <p class="typing-wrap">I am a <span class="typing"></span></p>
+        <p class="hero-subtext">
+          I build clean, fast and user-focused web experiences using modern frontend tools.
+        </p>
+        <div class="cta-group">
+          <a href="#projects" class="btn primary">View Projects</a>
+          <a href="#contact" class="btn secondary">Contact Me</a>
+        </div>
+      </div>
 
-  <!-- ABOUT -->
-  <section class="card">
-    <h2>About Me</h2>
-    <p>I am a passionate developer who loves building modern web apps.</p>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="card">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-      <span>Firebase</span>
+      <div class="hero-photo">
+        <img id="profileImage" src="assets/profile.jpeg" alt="Profile photo of Abhi Chellath" class="profile">
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- PROJECTS -->
-  <section class="card">
-    <h2>Projects</h2>
-    <div id="projects"></div>
-  </section>
+  <main class="container stack">
+    <section class="card" id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a passionate developer who loves creating elegant web apps with great performance and smooth user experience.
+      </p>
+    </section>
 
-  <!-- CONTACT -->
-  <section class="card">
-    <h2>Contact Me</h2>
+    <section class="card" id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Firebase</span>
+        <span>Responsive Design</span>
+        <span>UI Animation</span>
+      </div>
+    </section>
 
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" placeholder="Your Message" required></textarea>
-      
-      <button type="submit">Send Message</button>
-    </form>
+    <section class="card" id="projects">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <p>Selected works I have built recently.</p>
+      </div>
+      <div id="projectsGrid" class="projects-grid"></div>
+    </section>
 
-    <p id="successMsg">✅ Message sent successfully!</p>
-  </section>
+    <section class="card" id="contact">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="successMsg">Message sent successfully!</p>
+      <p id="errorMsg">Could not send message right now. Please try again later.</p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© <span id="year"></span> Abhi Chellath. Built with HTML, CSS, JavaScript & Firebase.</p>
+  </footer>
 
   <script type="module" src="app.js"></script>
 </body>
