@@ -1,27 +1,59 @@
 import { db } from './firebase.js';
-import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 console.log("JS LOADED ✅");
 
-document.addEventListener("DOMContentLoaded", () => {
+/* 🔥 Typing Effect */
+const text = ["Web Developer", "Firebase Lover", "Creative Coder"];
+let i = 0, j = 0;
+const typing = document.querySelector(".typing");
 
-  console.log("DOM READY ✅");
+function type() {
+  if (j < text[i].length) {
+    typing.innerHTML += text[i][j];
+    j++;
+    setTimeout(type, 100);
+  } else {
+    setTimeout(() => {
+      typing.innerHTML = "";
+      j = 0;
+      i = (i + 1) % text.length;
+      type();
+    }, 1500);
+  }
+}
+type();
+
+/* 📂 Load Projects */
+async function loadProjects() {
+  const snapshot = await getDocs(collection(db, "projects"));
+  const container = document.getElementById("projects");
+
+  snapshot.forEach(doc => {
+    const d = doc.data();
+    container.innerHTML += `
+      <div class="project-card">
+        <h3>${d.title}</h3>
+        <p>${d.description}</p>
+      </div>
+    `;
+  });
+}
+loadProjects();
+
+/* 📩 Contact Form FIX */
+document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById("contactForm");
   const successMsg = document.getElementById("successMsg");
   const btn = form.querySelector("button");
 
-  if (!form) {
-    console.error("FORM NOT FOUND ❌");
-    return;
-  }
-
   form.addEventListener("submit", async function(e) {
 
     e.preventDefault(); // 🔥 MAIN FIX
-    e.stopPropagation(); // 🔥 EXTRA STRONG FIX
+    e.stopPropagation(); // 🔥 EXTRA FIX
 
-    console.log("FORM SUBMIT STOPPED ✅");
+    console.log("SUBMIT STOPPED ✅");
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -38,8 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
         createdAt: new Date()
       });
 
-      console.log("DATA SENT ✅");
-
       successMsg.style.display = "block";
       form.reset();
 
@@ -51,7 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 3000);
 
     } catch (err) {
-      console.error("ERROR ❌", err);
+      console.error(err);
+      alert("Error sending message");
 
       btn.innerText = "Send Message";
       btn.disabled = false;

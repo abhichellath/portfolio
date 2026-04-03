@@ -24,7 +24,6 @@ body {
   margin: 20px;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
 /* SKILLS */
@@ -42,11 +41,6 @@ body {
   padding: 15px;
   border-radius: 10px;
   margin-top: 10px;
-  transition: 0.3s;
-}
-
-.project-card:hover {
-  transform: scale(1.05);
 }
 
 /* FORM */
@@ -67,7 +61,7 @@ button {
   cursor: pointer;
 }
 
-/* SUCCESS MESSAGE */
+/* SUCCESS */
 #successMsg {
   display: none;
   margin-top: 10px;
@@ -76,12 +70,5 @@ button {
   border: 1px solid #22c55e;
   border-radius: 8px;
   color: #22c55e;
-  font-weight: bold;
   text-align: center;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
 }
