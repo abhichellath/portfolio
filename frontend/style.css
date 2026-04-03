@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI';
+  background: #0f172a;
+  color: white;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+}
+
+.profile {
+  width: 140px;
+  border-radius: 50%;
+  border: 4px solid white;
+}
+
+.card {
+  background: #1e293b;
+  margin: 20px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.skills span {
+  display: inline-block;
+  background: #334155;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+#projects div {
+  margin-top: 10px;
+  padding: 10px;
+  background: #334155;
+  border-radius: 8px;
+}
