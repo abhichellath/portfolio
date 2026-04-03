@@ -1,82 +1,61 @@
 import { db } from './firebase.js';
-import { collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-/* 🔥 Typing Effect */
-const text = ["Web Developer", "Firebase Lover", "Creative Coder"];
-let i = 0, j = 0;
-const typing = document.querySelector(".typing");
+console.log("JS LOADED ✅");
 
-function type() {
-  if (j < text[i].length) {
-    typing.innerHTML += text[i][j];
-    j++;
-    setTimeout(type, 100);
-  } else {
-    setTimeout(() => {
-      typing.innerHTML = "";
-      j = 0;
-      i = (i + 1) % text.length;
-      type();
-    }, 1500);
+document.addEventListener("DOMContentLoaded", () => {
+
+  console.log("DOM READY ✅");
+
+  const form = document.getElementById("contactForm");
+  const successMsg = document.getElementById("successMsg");
+  const btn = form.querySelector("button");
+
+  if (!form) {
+    console.error("FORM NOT FOUND ❌");
+    return;
   }
-}
-type();
 
-/* 📂 Load Projects */
-async function loadProjects() {
-  const snapshot = await getDocs(collection(db, "projects"));
-  const container = document.getElementById("projects");
+  form.addEventListener("submit", async function(e) {
 
-  snapshot.forEach(doc => {
-    const d = doc.data();
-    container.innerHTML += `
-      <div class="project-card">
-        <h3>${d.title}</h3>
-        <p>${d.description}</p>
-      </div>
-    `;
+    e.preventDefault(); // 🔥 MAIN FIX
+    e.stopPropagation(); // 🔥 EXTRA STRONG FIX
+
+    console.log("FORM SUBMIT STOPPED ✅");
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    try {
+      btn.innerText = "Sending...";
+      btn.disabled = true;
+
+      await addDoc(collection(db, "messages"), {
+        name,
+        email,
+        message,
+        createdAt: new Date()
+      });
+
+      console.log("DATA SENT ✅");
+
+      successMsg.style.display = "block";
+      form.reset();
+
+      btn.innerText = "Send Message";
+      btn.disabled = false;
+
+      setTimeout(() => {
+        successMsg.style.display = "none";
+      }, 3000);
+
+    } catch (err) {
+      console.error("ERROR ❌", err);
+
+      btn.innerText = "Send Message";
+      btn.disabled = false;
+    }
   });
-}
-loadProjects();
 
-/* 📩 Contact Form */
-const form = document.getElementById("contactForm");
-const successMsg = document.getElementById("successMsg");
-const btn = form.querySelector("button");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-
-  try {
-    btn.innerText = "Sending...";
-    btn.disabled = true;
-
-    await addDoc(collection(db, "messages"), {
-      name,
-      email,
-      message,
-      createdAt: new Date()
-    });
-
-    successMsg.style.display = "block";
-    form.reset();
-
-    btn.innerText = "Send Message";
-    btn.disabled = false;
-
-    setTimeout(() => {
-      successMsg.style.display = "none";
-    }, 3000);
-
-  } catch (err) {
-    alert("Error sending message");
-    console.error(err);
-
-    btn.innerText = "Send Message";
-    btn.disabled = false;
-  }
 });
