@@ -38,8 +38,17 @@
 
   <!-- CONTACT -->
   <section class="card">
-    <h2>Contact</h2>
-    <p>Email: abhi@email.com</p>
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      
+      <button type="submit">Send Message</button>
+    </form>
+
+    <p id="successMsg">✅ Message sent successfully!</p>
   </section>
 
   <script type="module" src="app.js"></script>
